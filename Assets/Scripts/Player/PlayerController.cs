@@ -5,10 +5,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode jumpKeyCode = KeyCode.C;
 
     private MovementRigidbody2D movement;
+    private PlayerAnimator      playerAnimator;
+
 
     private void Awake()
     {
-        movement = GetComponent<MovementRigidbody2D>();
+        movement        = GetComponent<MovementRigidbody2D>();
+        playerAnimator  = GetComponentInChildren<PlayerAnimator>();
     }
 
     private void Update()
@@ -26,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
         // 플레이어의 점프 제어
         UpdateJump();
+
+        // 플레이어 애니메이션 재생
+        playerAnimator.UpdateAnimation(x);
     }
 
     private void UpdateMove(float _x)
