@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
         // 플레이어 애니메이션 재생
         playerAnimator.UpdateAnimation(x);
+
+        // 머리에 충돌한 오브젝트 처리
+        UpdateAboveCollision();
     }
 
     private void UpdateMove(float _x)
@@ -63,5 +66,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void UpdateAboveCollision()
+    {
+        if (movement.Velocity.y >= 0 && movement.HitAboveObject != null)
+        {
+            // 플레이어의 머리와 오브젝트가 충돌했기 때문에 y축 속력을 0으로 설정
+            movement.ResetVelocityY();
+        }
+    }
 }
