@@ -72,6 +72,12 @@ public class PlayerController : MonoBehaviour
         {
             // 플레이어의 머리와 오브젝트가 충돌했기 때문에 y축 속력을 0으로 설정
             movement.ResetVelocityY();
+
+            // 플레이어의 머리와 충돌한 오브젝트가 Tile일 때 Tile의 속성에 따라 충돌 처리
+            if (movement.HitAboveObject.TryGetComponent<TileBase>(out var tile) && !tile.IsHit)
+            {
+                tile.UpdateCollision();
+            }
         }
     }
 }

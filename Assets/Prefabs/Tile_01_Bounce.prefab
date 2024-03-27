@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5165617292799577189}
   - component: {fileID: 3491759631170551980}
   - component: {fileID: -3839912733872465822}
+  - component: {fileID: 3196619883888687187}
   m_Layer: 7
   m_Name: Tile_01_Bounce
   m_TagString: Untagged
@@ -133,3 +134,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3196619883888687187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7957592701754336123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccd762735331474baebc1b8c91c34fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBounce: 1

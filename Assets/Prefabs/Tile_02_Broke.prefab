@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4308303888833214197}
   - component: {fileID: 2622507929837838159}
   - component: {fileID: -3716528459042893171}
+  - component: {fileID: 1836343798357351208}
   m_Layer: 7
   m_Name: Tile_02_Broke
   m_TagString: Untagged
@@ -133,3 +134,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1836343798357351208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684151449221698806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2719fa760638a4d49a6a8438f5955644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBounce: 0
+  tileBrokeEffect: {fileID: 3455900825598798323, guid: d7485b9e64a4bff49a5802cc4484ca99, type: 3}

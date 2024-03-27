@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8002404673969625040}
   - component: {fileID: 5244096965052982580}
   - component: {fileID: 299909032985486528}
+  - component: {fileID: 5280784063710274212}
   m_Layer: 7
   m_Name: Tile_03_Item
   m_TagString: Untagged
@@ -133,3 +134,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5280784063710274212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7900485355771580945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21137e522994b5f409abb5ef0487f65b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBounce: 1
+  itemType: -1
+  itemPrefabs:
+  - {fileID: 3400702305787880255, guid: 70170aa6ccdf6f14f829f95522cd624b, type: 3}
+  - {fileID: 2956066221022260204, guid: 1851cfacc2a448d43beda69f3e919675, type: 3}
+  - {fileID: 5898618448963559723, guid: e7a7802a010e4d848880a0a1d7958efb, type: 3}
+  - {fileID: 5898618448963559723, guid: 117f6c7a2e0e792448e168176b22676a, type: 3}
+  coinCount: 5
+  nonBrokeImage: {fileID: 21300000, guid: 328e93411cef23d4bb95fbe7c7cb20b4, type: 3}
