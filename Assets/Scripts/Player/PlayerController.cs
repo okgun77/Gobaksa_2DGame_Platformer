@@ -36,8 +36,11 @@ public class PlayerController : MonoBehaviour
         // 플레이어 애니메이션 재생
         playerAnimator.UpdateAnimation(x);
 
-        // 머리에 충돌한 오브젝트 처리
+        // 머리/발에 충돌한 오브젝트 처리
         UpdateAboveCollision();
+        UpdateBelowCollision();
+
+
     }
 
     private void UpdateMove(float _x)
@@ -74,9 +77,20 @@ public class PlayerController : MonoBehaviour
             movement.ResetVelocityY();
 
             // 플레이어의 머리와 충돌한 오브젝트가 Tile일 때 Tile의 속성에 따라 충돌 처리
-            if (movement.HitAboveObject.TryGetComponent<TileBase>(out var tile) && !tile.IsHit)
+            if (movement.HitAboveObject.TryGetComponent<TileBase>(out var _tile) && !_tile.IsHit)
             {
-                tile.UpdateCollision();
+                _tile.UpdateCollision();
+            }
+        }
+    }
+
+    private void UpdateBelowCollision()
+    {
+        if (movement.HitBelowObject != null)
+        {
+            if (movement.HitBelowObject.TryGetComponent<PlatformBase>(out var _platform))
+            {
+                _platform.UpdateCollision(gameObject);
             }
         }
     }
