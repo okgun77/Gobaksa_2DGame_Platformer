@@ -5,16 +5,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private StageData           stageData;
     [SerializeField]
-    private KeyCode             jumpKeyCode = KeyCode.C;
+    private KeyCode             jumpKeyCode = KeyCode.C;    // 점프 키
+    [SerializeField]
+    private KeyCode             fireKeyCode = KeyCode.Z;    // 발사 키
 
     private MovementRigidbody2D movement;
     private PlayerAnimator      playerAnimator;
+    private PlayerWeapon        weapon;
+    private PlayerData          playerData;
+
+    private int                 lastDirectionX = 1;
 
 
     private void Awake()
     {
         movement        = GetComponent<MovementRigidbody2D>();
         playerAnimator  = GetComponentInChildren<PlayerAnimator>();
+        weapon          = GetComponent<PlayerWeapon>();
+        playerData      = GetComponent<PlayerData>();
     }
 
     private void Update()
@@ -22,6 +30,8 @@ public class PlayerController : MonoBehaviour
         // 키 입력 (좌우/ 방향키, x키)
         float x = Input.GetAxisRaw("Horizontal");
         float offset = 0.5f + Input.GetAxisRaw("Sprint") * 0.5f;
+
+        if (x != 0) lastDirectionX = (int)x;
 
         // 걷기 일 땐 값의 범위가 -0.5 ~ 0.5
         // 뛰기 일 땐 값의 범위가 -1 ~ 1로 설정
@@ -39,6 +49,9 @@ public class PlayerController : MonoBehaviour
         // 머리/발에 충돌한 오브젝트 처리
         UpdateAboveCollision();
         UpdateBelowCollision();
+
+        // 원거리 공격 제어
+        UpdateRangeAttack();
 
     }
 
@@ -97,6 +110,16 @@ public class PlayerController : MonoBehaviour
             {
                 _platform.UpdateCollision(gameObject);
             }
+        }
+    }
+
+    private void UpdateRangeAttack()
+    {
+        if (Input.GetKeyDown(fireKeyCode) && playerData.CurrentProjectile > 0)
+        {
+            playerData.CurrentProjectile--;
+
+            weapon.StartFire(lastDirectionX);
         }
     }
 }

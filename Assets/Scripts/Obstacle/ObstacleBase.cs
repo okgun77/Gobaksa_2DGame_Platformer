@@ -16,7 +16,8 @@ public class ObstacleBase : MonoBehaviour
         }
         else
         {
-            Debug.Log("플레이어 체력 감소");
+            // Debug.Log("플레이어 체력 감소");
+            _collision.GetComponent<PlayerHP>().DecreaseHP();
         }
     }
 }
