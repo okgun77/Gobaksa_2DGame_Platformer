@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 6910126261706881318}
   - component: {fileID: 1366190048382831565}
   - component: {fileID: 4656531853932795421}
+  - component: {fileID: 7197775760189938326}
   m_Layer: 8
   m_Name: Platform_00_Moving
   m_TagString: Untagged
@@ -166,11 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4913426659251360745}
-  wayPoints:
-  - {fileID: 6649483204455931097}
-  - {fileID: 3727920669267467746}
-  waitTime: 1
-  timeOffset: 0.5
 --- !u!50 &4656531853932795421
 Rigidbody2D:
   serializedVersion: 4
@@ -198,6 +194,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7197775760189938326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3450056349840610861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329704c2a36c01e4384f9953aa14f990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4913426659251360745}
+  wayPoints:
+  - {fileID: 6649483204455931097}
+  - {fileID: 3727920669267467746}
+  waitTime: 1
+  timeOffset: 0.5
 --- !u!1 &3577107956027066789
 GameObject:
   m_ObjectHideFlags: 0
