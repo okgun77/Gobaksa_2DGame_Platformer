@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
         UpdateAboveCollision();
         UpdateBelowCollision();
 
-
     }
 
     private void UpdateMove(float _x)
@@ -88,6 +87,12 @@ public class PlayerController : MonoBehaviour
     {
         if (movement.HitBelowObject != null)
         {
+            // Platform_03_OneWay
+
+            if (Input.GetKeyDown(KeyCode.DownArrow) && movement.HitBelowObject.TryGetComponent<PlatformEffectorExtension>(out var _p))
+            {
+                _p.OnDownWay();
+            }
             if (movement.HitBelowObject.TryGetComponent<PlatformBase>(out var _platform))
             {
                 _platform.UpdateCollision(gameObject);
