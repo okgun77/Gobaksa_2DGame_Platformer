@@ -2,13 +2,22 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private int     coin        = 0;
-    private int     projectile  = 0;
-    private bool[]  stars       = new bool[3] { false, false, false };
+    [SerializeField]
+    private UIPlayerData    uiPlayerData;
+
+    private int             coin        = 0;
+    private int             projectile  = 0;
+    private bool[]          stars       = new bool[3] { false, false, false };
 
     public int Coin
     {
-        set => coin = Mathf.Clamp(value, 0, 9999);
+        set
+        {
+            coin = Mathf.Clamp(value, 0, 9999);
+
+            uiPlayerData.SetCoin(coin);
+        }
+
         get => coin;
     }
 
@@ -17,13 +26,26 @@ public class PlayerData : MonoBehaviour
 
     public int CurrentProjectile
     {
-        set => projectile = Mathf.Clamp(value, 0, MaxProjectile);
+        set
+        {
+            projectile = Mathf.Clamp(value, 0, MaxProjectile);
+
+            uiPlayerData.SetProjectile(projectile, MaxProjectile);
+        }
+
         get => projectile;
     }
 
     public void GetStar(int _index)
     {
         stars[_index] = true;
+
+        uiPlayerData.SetStar(_index);
     }
 
+    private void Awake()
+    {
+        Coin = 0;
+        CurrentProjectile = 0;
+    }
 }

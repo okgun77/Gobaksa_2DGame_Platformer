@@ -2,6 +2,12 @@ using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 
+public enum FollowPath_State
+{
+    Idle = 0,
+    Move
+}
+
 public class FollowPath : MonoBehaviour
 {
     [SerializeField]
@@ -15,6 +21,11 @@ public class FollowPath : MonoBehaviour
 
     private int         wayPointCount;      // 이동 가능한 wayPoint 개수
     private int         currentIndex = 0;   // 현재 wayPoint 인덱스
+
+    private int         direction;
+    public  int         Direction => direction;
+
+    public FollowPath_State State { private set; get; } = FollowPath_State.Idle;
 
     private void Awake()
     {
@@ -47,6 +58,9 @@ public class FollowPath : MonoBehaviour
         float percent = 0;
         float moveTime = Vector3.Distance(_start, _end) * timeOffset;
 
+        SetDirection(_start.x, _end.x);
+        State = FollowPath_State.Move;
+        
         while (percent < 1)
         {
             percent += Time.deltaTime / moveTime;
@@ -54,5 +68,19 @@ public class FollowPath : MonoBehaviour
 
             yield return null;
         }
+
+        State = FollowPath_State.Idle;
     }
+
+    private void SetDirection(float _start, float _end)
+    {
+        if (_end - _start != 0) direction = (int)Mathf.Sign(_end = _start);
+        else                    direction = 0;
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+    }
+    
 }
