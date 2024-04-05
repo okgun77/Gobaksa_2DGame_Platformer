@@ -68,7 +68,17 @@ public class UIGamePopup : MonoBehaviour
     public void NextLevel()
     {
         SetTimeScale(1);
-        Utils.LoadScene();
+
+        int currentLevel = PlayerPrefs.GetInt(Constants.CurrentLevel);
+        if (currentLevel >= Constants.MaxLevel)
+        {
+            SelectLevel();
+        }
+        else
+        {
+            PlayerPrefs.SetInt(Constants.CurrentLevel, currentLevel + 1);
+            Utils.LoadScene();
+        }
     }
 
 }

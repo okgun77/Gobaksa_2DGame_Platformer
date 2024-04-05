@@ -5,18 +5,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameController      gameController;
     [SerializeField]
-    private StageData           stageData;
-    [SerializeField]
     private KeyCode             jumpKeyCode = KeyCode.C;    // 점프 키
     [SerializeField]
     private KeyCode             fireKeyCode = KeyCode.Z;    // 발사 키
 
+    private StageData           stageData;
     private MovementRigidbody2D movement;
     private PlayerAnimator      playerAnimator;
     private PlayerWeapon        weapon;
     private PlayerData          playerData;
 
     private int                 lastDirectionX = 1;
+
+    public void Setup(StageData _stageData)
+    {
+        this.stageData      = _stageData;
+        transform.position  = this.stageData.PlayerPosition;
+    }
 
 
     private void Awake()

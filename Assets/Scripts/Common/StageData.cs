@@ -19,6 +19,13 @@ public class StageData : ScriptableObject
     [SerializeField]
     private float mapLimitMinY;		// 현재 스테이지의 가장 아래 바닥 y 위치
 
+    [Header("Start Position")]
+    [SerializeField]
+    private Vector2 playerPosition;
+    [SerializeField]
+    private Vector2 cameraPosition;
+
+
     // 외부에서 변수 데이터에 접근하기 위한 프로퍼티 Get
     public  float   CameraLimitMinX => cameraLimitMinX;
     public  float   CameraLimitMaxX => cameraLimitMaxX;
@@ -26,4 +33,6 @@ public class StageData : ScriptableObject
     public  float   PlayerLimitMaxX => playerLimitMaxX;
     public  float   MapLimitMinY    => mapLimitMinY;
 
+    public  Vector2 PlayerPosition  => playerPosition;
+    public  Vector2 CameraPosition  => cameraPosition;
 }

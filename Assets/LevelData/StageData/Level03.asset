@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 812f159aa5d82ce4f9d21100a50b8d51, type: 3}
-  m_Name: Level01
+  m_Name: Level03
   m_EditorClassIdentifier: 
   cameraLimitMinX: 0
   cameraLimitMaxX: 112
   playerLimitMinX: -10
   playerLimitMaxX: 122
   mapLimitMinY: -8
+  playerPosition: {x: -8, y: -3}
+  cameraPosition: {x: 0, y: 0}
