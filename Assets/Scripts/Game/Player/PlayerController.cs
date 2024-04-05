@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private GameController      gameController;
+    [SerializeField]
     private StageData           stageData;
     [SerializeField]
     private KeyCode             jumpKeyCode = KeyCode.C;    // 점프 키
@@ -53,6 +55,8 @@ public class PlayerController : MonoBehaviour
         // 원거리 공격 제어
         UpdateRangeAttack();
 
+        // 플레이어가 낭떠러지로 추락했는지 검사
+        IsUnderGround();
     }
 
     private void UpdateMove(float _x)
@@ -122,4 +126,23 @@ public class PlayerController : MonoBehaviour
             weapon.StartFire(lastDirectionX);
         }
     }
+
+    private void IsUnderGround()
+    {
+        if (transform.position.y < stageData.MapLimitMinY)
+        {
+            OnDie();
+        }
+    }
+
+    public void OnDie()
+    {
+        gameController.LevelFailed();
+    }
+
+    public void LevelComplete()
+    {
+        gameController.LevelComplete();
+    }
+
 }

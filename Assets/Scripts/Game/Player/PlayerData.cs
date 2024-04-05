@@ -36,6 +36,9 @@ public class PlayerData : MonoBehaviour
         get => projectile;
     }
 
+    public bool[] Stars => stars;
+
+
     public void GetStar(int _index)
     {
         stars[_index] = true;
@@ -45,7 +48,7 @@ public class PlayerData : MonoBehaviour
 
     private void Awake()
     {
-        Coin = 0;
+        // Coin = 0;
         CurrentProjectile = 0;
     }
 }

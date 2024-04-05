@@ -4,24 +4,26 @@ using UnityEngine;
 public class PlayerHP : MonoBehaviour
 {
     [SerializeField]
-    private UIPlayerData    uiPlayerData;
+    private UIPlayerData        uiPlayerData;
 
     [SerializeField]
-    private int             maxHP = 3;                  // 최대 체력
+    private int                 maxHP = 3;                  // 최대 체력
     
-    private int             currentHP;                  // 현재 체력
+    private int                 currentHP;                  // 현재 체력
 
-    private SpriteRenderer  spriteRenderer;             // 플레이어 피격 시 색상 변경을 위해
-    private Color           originColor;                // 플레이어의 초기 색상
+    private PlayerController    playerController;
+    private SpriteRenderer      spriteRenderer;             // 플레이어 피격 시 색상 변경을 위해
+    private Color               originColor;                // 플레이어의 초기 색상
 
-    private float           invincibilityTime = 0;      // 무적 지속시간
-    private bool            isInvincibility = false;    // 무적 여부
+    private float               invincibilityTime = 0;      // 무적 지속시간
+    private bool                isInvincibility = false;    // 무적 여부
 
     private void Awake()
     {
-        currentHP       = maxHP;
-        spriteRenderer  = GetComponentInChildren<SpriteRenderer>();
-        originColor     = spriteRenderer.color;
+        currentHP           = maxHP;
+        playerController    = GetComponent<PlayerController>();
+        spriteRenderer      = GetComponentInChildren<SpriteRenderer>();
+        originColor         = spriteRenderer.color;
     }
 
     public void DecreaseHP()
@@ -39,7 +41,8 @@ public class PlayerHP : MonoBehaviour
         }
         else
         {
-            Debug.Log("플레이어 사망 처리");
+            // Debug.Log("플레이어 사망 처리");
+            playerController.OnDie();
         }
     }
 

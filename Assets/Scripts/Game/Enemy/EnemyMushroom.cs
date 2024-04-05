@@ -26,6 +26,6 @@ public class EnemyMushroom : EnemyBase
         IsDie = true;
 
         followPath.Stop();
-        animator.SetTrigger("OnDie");
+        animator.SetTrigger("onDie");
     }
 }
